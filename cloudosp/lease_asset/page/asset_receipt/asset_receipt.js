@@ -92,9 +92,7 @@ frappe.pages["asset-receipt"].on_page_load = function (wrapper) {
 					${pools
 						.map(
 							(p) =>
-								`<option value="${esc(p.name)}">${esc(p.pool_name)}<span class="rc-tag">${esc(
-									p.architecture
-								)}</span></option>`
+								`<option value="${esc(p.name)}">${esc(p.pool_name)}（${esc(p.architecture || "")}）</option>`
 						)
 						.join("")}
 				</select>
@@ -588,11 +586,10 @@ frappe.pages["asset-receipt"].on_page_load = function (wrapper) {
 			.catch((err) => $msg.html(`<div class="alert alert-danger small mb-0">${esc(err || __("保存失败"))}</div>`));
 	});
 
-	const load = () => {
+	const load = () =>
 		api("get_receipt_options").then((res) => {
 			state.options = res;
 		});
-	};
 
 	page.set_primary_action(__("重新开始"), () => {
 		state.step = 0;
@@ -613,5 +610,8 @@ frappe.pages["asset-receipt"].on_page_load = function (wrapper) {
 
 	render_steps();
 	render_step();
-	load();
+	load().then(() => {
+		// 选项是异步加载的；补货单/资源池下拉在选项就绪后重绘，避免首屏为空
+		if (STEPS[state.step].key === "target") render_step();
+	});
 };

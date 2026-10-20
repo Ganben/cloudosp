@@ -23,6 +23,7 @@ frappe.pages["lease-request-process"].on_page_load = function (wrapper) {
 	</style>`).appendTo(page.main);
 
 	const $panel = $(`<div class="rq-panel">
+		<div class="rq-mode mb-3"></div>
 		<div class="rq-steps"></div>
 		<div class="rq-body"></div>
 	</div>`).appendTo(page.main);
@@ -41,9 +42,11 @@ frappe.pages["lease-request-process"].on_page_load = function (wrapper) {
 	];
 
 	const state = {
+		mode: "process",
 		step: 0,
 		options: null,
 		payload: { lease_order: "", products: [], delivery_items: [], tags: [], readings: [], notify_elink_bot: 0, notify_sms: 0 },
+		app: { name: "", customer: "", resource_pool: "", items: [], delivery_ip: "", login_account: "", login_password: "", tenant_user: "" },
 	};
 
 	const api = (method, args) => frappe.xcall(`${API}.${method}`, args);
@@ -481,9 +484,216 @@ frappe.pages["lease-request-process"].on_page_load = function (wrapper) {
 			.catch((err) => $msg.html(`<div class="alert alert-danger small mb-0">${esc(err || __("保存失败"))}</div>`));
 	});
 
-	const load = () => {
+	const load = () =>
 		api("get_request_options").then((res) => {
 			state.options = res;
+		});
+
+	// ------------------------------------------------ 申请单直录模式
+	const render_mode = () => {
+		$panel.find(".rq-mode").html(`
+			<h6 class="rq-title">${__("选择处理方式")}</h6>
+			<button class="btn btn-sm ${state.mode === "process" ? "btn-primary" : "btn-default"} rq-mode-btn" data-mode="process">${__(
+			"申请处理流程"
+		)}</button>
+			<button class="btn btn-sm ${state.mode === "direct" ? "btn-primary" : "btn-default"} rq-mode-btn" data-mode="direct">${__(
+			"申请单直录"
+		)}</button>
+		`);
+	};
+
+	const show = () => {
+		if (state.mode === "direct") {
+			$steps.html("");
+			render_direct();
+		} else {
+			render_steps();
+			render_step();
+		}
+	};
+
+	$panel.find(".rq-mode").on("click", ".rq-mode-btn", function () {
+		state.mode = $(this).attr("data-mode");
+		state.step = 0;
+		render_mode();
+		show();
+	});
+
+	const render_direct = () => {
+		const customers = state.options ? state.options.customers || [] : [];
+		const pools = state.options ? state.options.pools || [] : [];
+		const tenantUsers = state.options ? state.options.tenant_users || [] : [];
+		const app = state.app;
+		const created = app.name
+			? `<span class="badge badge-success">${__("申请单")} ${esc(app.name)}</span>`
+			: "";
+
+		$body.html(`
+			<h6 class="rq-title">${__("申请单直录")}</h6>
+			<div class="rq-row">
+				<label>${__("客户")}</label>
+				<select class="form-select form-select-sm app-customer" style="max-width:320px" ${app.name ? "disabled" : ""}>
+					<option value="">${__("请选择客户")}</option>
+					${customers
+						.map(
+							(c) =>
+								`<option value="${esc(c.name)}" ${c.name === app.customer ? "selected" : ""}>${esc(c.customer_name)}</option>`
+						)
+						.join("")}
+				</select>
+				<button class="btn btn-sm btn-primary app-create" ${app.name ? "disabled" : ""}>${__("生成申请单")}</button>
+				${created}
+			</div>
+
+			<fieldset class="mt-3" ${app.name ? "" : "disabled"}>
+				<div class="rq-row">
+					<label>${__("资源池")}</label>
+					<select class="form-select form-select-sm app-pool" style="max-width:320px">
+						<option value="">${__("请选择资源池")}</option>
+						${pools
+							.map(
+								(p) =>
+									`<option value="${esc(p.name)}" ${p.name === app.resource_pool ? "selected" : ""}>${esc(p.pool_name)}（${esc(p.name)}）</option>`
+							)
+							.join("")}
+					</select>
+				</div>
+				<table class="table table-sm table-bordered rq-list app-items">
+					<thead class="thead-light"><tr>
+						<th style="width:50%">${__("产品")}</th>
+						<th style="width:110px">${__("数量")}</th>
+						<th style="width:110px">${__("租赁月数")}</th>
+						<th style="width:40px"></th>
+					</tr></thead>
+					<tbody></tbody>
+				</table>
+				<button class="btn btn-sm btn-outline-secondary app-add-item">${__("添加产品")}</button>
+				<div class="rq-row mt-3">
+					<label>${__("交付 IP")}</label>
+					<input class="form-control form-control-sm app-ip" style="max-width:260px">
+				</div>
+				<div class="rq-row">
+					<label>${__("登录账户")}</label>
+					<input class="form-control form-control-sm app-account" style="max-width:260px">
+				</div>
+				<div class="rq-row">
+					<label>${__("登录密码")}</label>
+					<input type="password" class="form-control form-control-sm app-password" style="max-width:260px">
+				</div>
+				<div class="rq-row">
+					<label>${__("租户用户")}</label>
+					<select class="form-select form-select-sm app-tenant" style="max-width:320px">
+						<option value="">${__("请选择租户用户")}</option>
+						${tenantUsers
+							.map((u) => `<option value="${esc(u.name)}">${esc(u.name)}（${esc(u.full_name)}）</option>`)
+							.join("")}
+					</select>
+					<span class="small text-muted">${__("推送将发送给该用户")}</span>
+				</div>
+				<div class="rq-actions">
+					<button class="btn btn-sm btn-default app-save">${__("保存草稿")}</button>
+					<button class="btn btn-sm btn-success app-complete">${__("完成并推送到租户用户")}</button>
+				</div>
+				<div class="app-msg mt-2"></div>
+			</fieldset>
+		`);
+
+		const $tbody = $body.find(".app-items tbody");
+		const add_item = (item) => {
+			const row = $(`<tr>
+				<td><select class="form-select form-select-sm i-product">${(state.options ? state.options.products || [] : [])
+					.map((p) => `<option value="${esc(p.name)}">${esc(p.product_name)}</option>`)
+					.join("")}</select></td>
+				<td><input type="number" class="form-control form-control-sm i-qty" value="${esc(
+					(item && item.quantity) || 1
+				)}" min="1" step="any"></td>
+				<td><input type="number" class="form-control form-control-sm i-months" value="${esc(
+					(item && item.lease_months) || 1
+				)}" min="1" step="1"></td>
+				<td><button class="btn btn-sm btn-outline-danger i-del">&times;</button></td>
+			</tr>`);
+			if (item) row.find(".i-product").val(item.product);
+			row.find(".i-del").on("click", () => {
+				if ($tbody.find("tr").length > 1) row.remove();
+			});
+			$tbody.append(row);
+		};
+
+		if (app.items && app.items.length) app.items.forEach(add_item);
+		else add_item();
+
+		$body.find(".app-add-item").on("click", () => add_item());
+
+		$body.find(".app-create").on("click", () => {
+			const customer = $body.find(".app-customer").val();
+			const $msg = $body.find(".app-msg");
+			if (!customer) {
+				$msg.html(`<div class="alert alert-warning small mb-0">${__("请选择客户")}</div>`);
+				return;
+			}
+			api("create_application", { customer: customer })
+				.then((res) => {
+					state.app.name = res.name;
+					state.app.customer = res.customer;
+					render_direct();
+				})
+				.catch((err) => $msg.html(`<div class="alert alert-danger small mb-0">${esc(err)}</div>`));
+		});
+
+		const collect_app = () => ({
+			name: state.app.name,
+			resource_pool: $body.find(".app-pool").val(),
+			items: $tbody
+				.find("tr")
+				.map(function () {
+					return {
+						product: $(this).find(".i-product").val(),
+						quantity: $(this).find(".i-qty").val(),
+						lease_months: $(this).find(".i-months").val(),
+					};
+				})
+				.get(),
+			delivery_ip: $body.find(".app-ip").val(),
+			login_account: $body.find(".app-account").val(),
+			login_password: $body.find(".app-password").val(),
+			tenant_user: $body.find(".app-tenant").val(),
+		});
+
+		$body.find(".app-save").on("click", () => {
+			const $msg = $body.find(".app-msg");
+			$msg.html("");
+			api("save_application", { values: collect_app() })
+				.then((res) => {
+					$msg.html(
+						`<div class="alert alert-success small mb-0">${__("已保存草稿")}：${esc(res.name)}（${esc(
+							res.item_count
+						)} ${__("条明细")}）</div>`
+					);
+				})
+				.catch((err) => $msg.html(`<div class="alert alert-danger small mb-0">${esc(err)}</div>`));
+		});
+
+		$body.find(".app-complete").on("click", () => {
+			const $msg = $body.find(".app-msg");
+			$msg.html("");
+			const values = collect_app();
+			if (!values.resource_pool) {
+				$msg.html(`<div class="alert alert-warning small mb-0">${__("请选择资源池")}</div>`);
+				return;
+			}
+			api("save_application", { values: values })
+				.then(() => api("complete_and_push", { name: state.app.name }))
+				.then((res) => {
+					state.app.name = "";
+					state.app.customer = "";
+					show();
+					$msg.html(
+						`<div class="alert alert-success small mb-0">${__("已完成并推送")}：${esc(res.name)}（${__(
+							"推送渠道"
+						)}：${esc((res.pushed || []).join("、") || __("无"))}）</div>`
+					);
+				})
+				.catch((err) => $msg.html(`<div class="alert alert-danger small mb-0">${esc(err)}</div>`));
 		});
 	};
 
@@ -498,11 +708,23 @@ frappe.pages["lease-request-process"].on_page_load = function (wrapper) {
 			notify_elink_bot: 0,
 			notify_sms: 0,
 		};
-		render_steps();
-		render_step();
+		state.app = {
+			name: "",
+			customer: "",
+			resource_pool: "",
+			items: [],
+			delivery_ip: "",
+			login_account: "",
+			login_password: "",
+			tenant_user: "",
+		};
+		show();
 	});
 
-	render_steps();
-	render_step();
-	load();
+	render_mode();
+	show();
+	load().then(() => {
+		// 选项是异步加载的；下拉在选项就绪后重绘，避免首屏为空
+		show();
+	});
 };

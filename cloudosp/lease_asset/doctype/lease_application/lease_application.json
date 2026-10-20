@@ -1,0 +1,147 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "naming_series:",
+ "creation": "2026-10-18 15:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "customer",
+  "resource_pool",
+  "tenant_user",
+  "column_break_basic",
+  "status",
+  "delivered_at",
+  "section_break_items",
+  "items",
+  "section_break_delivery",
+  "delivery_ip",
+  "login_account",
+  "login_password",
+  "section_break_remarks",
+  "remarks"
+ ],
+ "fields": [
+  {
+   "default": "LAPP-.YYYY.-",
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "编号系列",
+   "no_copy": 1,
+   "options": "LAPP-.YYYY.-",
+   "reqd": 1
+  },
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "客户",
+   "options": "Customer",
+   "reqd": 1
+  },
+  {
+   "fieldname": "resource_pool",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "资源池",
+   "options": "Resource Pool"
+  },
+  {
+   "description": "接收交付通知的租户用户（网站用户）",
+   "fieldname": "tenant_user",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "租户用户",
+   "options": "User"
+  },
+  {
+   "fieldname": "column_break_basic",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "草稿",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "状态",
+   "options": "\n草稿\n已提交\n已交付\n已取消"
+  },
+  {
+   "fieldname": "delivered_at",
+   "fieldtype": "Datetime",
+   "label": "交付时间",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_items",
+   "fieldtype": "Section Break",
+   "label": "产品明细"
+  },
+  {
+   "fieldname": "items",
+   "fieldtype": "Table",
+   "label": "产品明细",
+   "options": "Lease Application Item"
+  },
+  {
+   "fieldname": "section_break_delivery",
+   "fieldtype": "Section Break",
+   "label": "交付信息"
+  },
+  {
+   "fieldname": "delivery_ip",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "交付 IP"
+  },
+  {
+   "fieldname": "login_account",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "登录账户"
+  },
+  {
+   "fieldname": "login_password",
+   "fieldtype": "Password",
+   "label": "登录密码"
+  },
+  {
+   "fieldname": "section_break_remarks",
+   "fieldtype": "Section Break",
+   "label": "备注"
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Small Text",
+   "label": "备注"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-10-18 16:30:00.000000",
+ "modified_by": "Administrator",
+ "module": "Lease Asset",
+ "name": "Lease Application",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

@@ -4,7 +4,7 @@ import frappe
 from frappe import _
 from frappe.utils import cint, flt, getdate
 
-from cloudosp.lease_asset.plan_api import DIMENSION_KEYS, DIMENSION_LABEL
+from .plan_api import DIMENSION_KEYS, DIMENSION_LABEL
 
 DEFAULT_PAGE_SIZE = 20
 

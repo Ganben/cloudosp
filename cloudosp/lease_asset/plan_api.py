@@ -91,7 +91,7 @@ def get_plan_options():
 			"Customer", fields=["name", "customer_name"], order_by="customer_name asc", limit_page_length=500
 		)
 	else:
-		from cloudosp.lease_asset.api import get_portal_customer
+		from .api import get_portal_customer
 
 		customer, _is_manager = get_portal_customer()
 		customers = (

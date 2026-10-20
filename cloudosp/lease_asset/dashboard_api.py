@@ -78,7 +78,7 @@ def _flat_pools(topology):
 
 @frappe.whitelist()
 def get_dashboard_data():
-	from cloudosp.lease_asset.resource_pool_api import get_topology
+	from .resource_pool_api import get_topology
 
 	topology = get_topology()
 	return {

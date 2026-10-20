@@ -30,6 +30,7 @@ EXPECTED_DOCTYPES = [
 	"Lease Request Delivery",
 	"Lease Request Tag",
 	"Lease Request Pool Reading",
+	"Lease Issue",
 ]
 
 EXPECTED_PAGES = [
@@ -41,6 +42,7 @@ EXPECTED_PAGES = [
 	"expansion-control",
 	"asset-receipt",
 	"lease-request-process",
+	"issue-list",
 ]
 
 # (fixture 对应的 DocType, 期望的最小记录数) —— 用于确认 migrate 已导入示例数据

@@ -1,7 +1,7 @@
 import frappe
 from frappe import _
 
-from cloudosp.lease_asset.api import (
+from ..lease_asset.api import (
 	get_portal_customer,
 	get_product_pool_options,
 	load_lease_orders,

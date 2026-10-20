@@ -48,6 +48,7 @@ add_to_apps_screen = [
 
 # include js, css files in header of desk.html
 # app_include_css = "/assets/cloudosp/css/cloudosp.css"
+app_include_js = ["/assets/cloudosp/js/lease_issue_button.js"]
 # app_include_js = "/assets/cloudosp/js/cloudosp.js"
 
 # include js, css files in header of web template

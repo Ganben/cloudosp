@@ -4,7 +4,7 @@ import frappe
 from frappe import _
 from frappe.utils import cint, flt
 
-from cloudosp.lease_asset.plan_api import get_product_dimensions
+from .plan_api import get_product_dimensions
 
 
 def _as_dict(values):

@@ -4,7 +4,7 @@ import frappe
 from frappe import _
 from frappe.utils import cint, flt
 
-from cloudosp.lease_asset.plan_api import DIMENSION_KEYS, DIMENSION_LABEL, get_product_dimensions
+from .plan_api import DIMENSION_KEYS, DIMENSION_LABEL, get_product_dimensions
 
 DIMENSION_META = {"cpu": (_("CPU"), _("核")), "memory": (_("内存"), _("GB")), "storage": (_("存储"), _("TB"))}
 

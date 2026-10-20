@@ -5,7 +5,7 @@ import frappe
 from frappe.model.document import Document
 from frappe.utils import flt
 
-from cloudosp.lease_asset.plan_api import get_product_dimensions
+from ...plan_api import get_product_dimensions
 
 
 class LeasePlanOrder(Document):

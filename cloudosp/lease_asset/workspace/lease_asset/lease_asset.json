@@ -1,6 +1,6 @@
 {
  "charts": [],
- "content": "[{\"id\":\"la-header-0001\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>资产租赁</b></span>\",\"col\":12}},{\"id\":\"la-nc-0001\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"总资产数\",\"col\":4}},{\"id\":\"la-nc-0002\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"作业中的资产数\",\"col\":4}},{\"id\":\"la-nc-0003\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"进行中的作业数\",\"col\":4}},{\"id\":\"la-shortcut-0001\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"租赁资产仪表盘\",\"col\":3}},{\"id\":\"la-shortcut-0002\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"资源池维护\",\"col\":3}},{\"id\":\"la-shortcut-0003\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"计划与预定\",\"col\":3}},{\"id\":\"la-shortcut-0004\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"产品库维护\",\"col\":3}},{\"id\":\"la-shortcut-0005\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"运营服务仪表盘\",\"col\":3}},{\"id\":\"la-shortcut-0006\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"扩容物控\",\"col\":3}},{\"id\":\"la-shortcut-0007\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"资产扩容接收\",\"col\":3}},{\"id\":\"la-shortcut-0008\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"租赁申请处理\",\"col\":3}},{\"id\":\"la-shortcut-0009\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"运营账号维护\",\"col\":3}}]",
+ "content": "[{\"id\":\"la-header-0001\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>资产租赁</b></span>\",\"col\":12}},{\"id\":\"la-nc-0001\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"总资产数\",\"col\":4}},{\"id\":\"la-nc-0002\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"作业中的资产数\",\"col\":4}},{\"id\":\"la-nc-0003\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"进行中的作业数\",\"col\":4}},{\"id\":\"la-shortcut-0001\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"租赁资产仪表盘\",\"col\":3}},{\"id\":\"la-shortcut-0002\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"资源池维护\",\"col\":3}},{\"id\":\"la-shortcut-0003\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"计划与预定\",\"col\":3}},{\"id\":\"la-shortcut-0004\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"产品库维护\",\"col\":3}},{\"id\":\"la-shortcut-0005\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"运营服务仪表盘\",\"col\":3}},{\"id\":\"la-shortcut-0006\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"扩容物控\",\"col\":3}},{\"id\":\"la-shortcut-0007\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"资产扩容接收\",\"col\":3}},{\"id\":\"la-shortcut-0008\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"租赁申请处理\",\"col\":3}},{\"id\":\"la-shortcut-0009\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"运营账号维护\",\"col\":3}},{\"id\":\"la-shortcut-0010\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Issue 列表\",\"col\":3}}]",
  "creation": "2026-10-10 12:00:00.000000",
  "custom_blocks": [],
  "docstatus": 0,
@@ -12,7 +12,7 @@
  "is_hidden": 0,
  "label": "资产租赁",
  "links": [],
- "modified": "2026-10-19 09:00:00.000000",
+ "modified": "2026-10-19 10:30:00.000000",
  "modified_by": "Administrator",
  "module": "Lease Asset",
  "name": "Lease Asset",
@@ -80,6 +80,11 @@
   {
    "label": "运营账号维护",
    "link_to": "user-admin",
+   "type": "Page"
+  },
+  {
+   "label": "Issue 列表",
+   "link_to": "issue-list",
    "type": "Page"
   }
  ],
