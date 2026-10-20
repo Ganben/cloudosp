@@ -1,0 +1,28 @@
+[
+ {
+  "address": "上海市浦东新区",
+  "city": "上海",
+  "data_center_name": "上海数据中心",
+  "docstatus": 0,
+  "doctype": "Data Center",
+  "modified": "2026-10-16 09:10:00.000000",
+  "modified_by": "Administrator",
+  "name": "DC-SH-01",
+  "provider": "自建",
+  "remarks": "示例数据",
+  "status": "在用"
+ },
+ {
+  "address": "北京市海淀区",
+  "city": "北京",
+  "data_center_name": "北京数据中心",
+  "docstatus": 0,
+  "doctype": "Data Center",
+  "modified": "2026-10-16 09:10:00.000000",
+  "modified_by": "Administrator",
+  "name": "DC-BJ-01",
+  "provider": "自建",
+  "remarks": "示例数据",
+  "status": "在用"
+ }
+]

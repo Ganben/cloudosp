@@ -1,0 +1,220 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "naming_series:",
+ "creation": "2026-10-10 12:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "pool_name",
+  "pool_type",
+  "architecture",
+  "column_break_basic",
+  "total_capacity",
+  "used_capacity",
+  "status",
+  "section_break_capacity",
+  "cpu_total",
+  "cpu_used",
+  "column_break_capacity",
+  "memory_total",
+  "memory_used",
+  "column_break_capacity_1",
+  "storage_total",
+  "storage_used",
+  "section_break_hierarchy",
+  "region",
+  "network_zone",
+  "column_break_hierarchy",
+  "data_center",
+  "section_break_remarks",
+  "remarks"
+ ],
+ "fields": [
+  {
+   "default": "RP-.YYYY.-",
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "编号系列",
+   "no_copy": 1,
+   "options": "RP-.YYYY.-",
+   "reqd": 1
+  },
+  {
+   "fieldname": "pool_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "资源池名称",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "pool_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "资源类型",
+   "options": "\n计算\n存储\n网络"
+  },
+  {
+   "default": "x86",
+   "fieldname": "architecture",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "架构",
+   "options": "\nx86\nARM\nRISC-V\n异构混合"
+  },
+  {
+   "fieldname": "column_break_basic",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "total_capacity",
+   "fieldtype": "Float",
+   "label": "总容量",
+   "non_negative": 1
+  },
+  {
+   "fieldname": "used_capacity",
+   "fieldtype": "Float",
+   "label": "已用容量",
+   "non_negative": 1
+  },
+  {
+   "default": "可用",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "状态",
+   "options": "\n可用\n已满\n维护中"
+  },
+  {
+   "fieldname": "section_break_capacity",
+   "fieldtype": "Section Break",
+   "label": "三维容量"
+  },
+  {
+   "fieldname": "cpu_total",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "CPU 总量（核）",
+   "non_negative": 1
+  },
+  {
+   "fieldname": "cpu_used",
+   "fieldtype": "Float",
+   "label": "CPU 已用（核）",
+   "non_negative": 1
+  },
+  {
+   "fieldname": "column_break_capacity",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "memory_total",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "内存总量（GB）",
+   "non_negative": 1
+  },
+  {
+   "fieldname": "memory_used",
+   "fieldtype": "Float",
+   "label": "内存已用（GB）",
+   "non_negative": 1
+  },
+  {
+   "fieldname": "column_break_capacity_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "storage_total",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "存储总量（TB）",
+   "non_negative": 1
+  },
+  {
+   "fieldname": "storage_used",
+   "fieldtype": "Float",
+   "label": "存储已用（TB）",
+   "non_negative": 1
+  },
+  {
+   "fieldname": "section_break_hierarchy",
+   "fieldtype": "Section Break",
+   "label": "所属位置"
+  },
+  {
+   "fieldname": "region",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "区域",
+   "options": "Region"
+  },
+  {
+   "fetch_from": "region.network_zone",
+   "fieldname": "network_zone",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "网络分区",
+   "options": "Network Zone",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_hierarchy",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "region.data_center",
+   "fieldname": "data_center",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "数据中心",
+   "options": "Data Center",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_remarks",
+   "fieldtype": "Section Break",
+   "label": "备注"
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Small Text",
+   "label": "备注"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-10-16 16:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Lease Asset",
+ "name": "Resource Pool",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "pool_name",
+ "track_changes": 1
+}

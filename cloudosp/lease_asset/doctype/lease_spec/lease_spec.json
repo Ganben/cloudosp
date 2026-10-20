@@ -1,0 +1,120 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "field:spec_name",
+ "creation": "2026-10-10 15:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "spec_name",
+  "spec_type",
+  "dimension",
+  "uom",
+  "canonical_factor",
+  "column_break_basic",
+  "status",
+  "default_quantity",
+  "section_break_description",
+  "description"
+ ],
+ "fields": [
+  {
+   "fieldname": "spec_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "规格名称",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "default": "计算",
+   "fieldname": "spec_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "规格类型",
+   "options": "\n计算\n存储\n网络\n自定义",
+   "reqd": 1
+  },
+  {
+   "default": "其它",
+   "description": "用于资源汇总归集；CPU 记为核、内存记为 GB、存储记为 TB",
+   "fieldname": "dimension",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "资源维度",
+   "options": "\nCPU\n内存\n存储\n网络\n其它"
+  },
+  {
+   "fieldname": "uom",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "计量单位"
+  },
+  {
+   "default": "1",
+   "description": "换算到该维度标准单位的系数，例如系统盘单位为 GB 时填 0.001（1GB = 0.001TB）",
+   "fieldname": "canonical_factor",
+   "fieldtype": "Float",
+   "label": "换算系数",
+   "non_negative": 1
+  },
+  {
+   "fieldname": "column_break_basic",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "在用",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "状态",
+   "options": "\n在用\n停用"
+  },
+  {
+   "default": "1",
+   "fieldname": "default_quantity",
+   "fieldtype": "Float",
+   "label": "默认数量",
+   "non_negative": 1
+  },
+  {
+   "fieldname": "section_break_description",
+   "fieldtype": "Section Break",
+   "label": "描述"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "描述"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-10-16 17:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Lease Asset",
+ "name": "Lease Spec",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "spec_name",
+ "track_changes": 1
+}

@@ -1,0 +1,35 @@
+[
+ {
+  "data_center": "DC-SH-01",
+  "docstatus": 0,
+  "doctype": "Region",
+  "modified": "2026-10-16 09:10:00.000000",
+  "modified_by": "Administrator",
+  "name": "REG-SH-A",
+  "network_zone": "NZ-SH-PROD",
+  "region_name": "华东-A区",
+  "status": "在用"
+ },
+ {
+  "data_center": "DC-SH-01",
+  "docstatus": 0,
+  "doctype": "Region",
+  "modified": "2026-10-16 09:10:00.000000",
+  "modified_by": "Administrator",
+  "name": "REG-SH-B",
+  "network_zone": "NZ-SH-TEST",
+  "region_name": "华东-B区",
+  "status": "在用"
+ },
+ {
+  "data_center": "DC-BJ-01",
+  "docstatus": 0,
+  "doctype": "Region",
+  "modified": "2026-10-16 09:10:00.000000",
+  "modified_by": "Administrator",
+  "name": "REG-BJ-A",
+  "network_zone": "NZ-BJ-PROD",
+  "region_name": "华北-A区",
+  "status": "在用"
+ }
+]

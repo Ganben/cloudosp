@@ -1,0 +1,44 @@
+[
+ {
+  "cidr": "10.10.0.0/16",
+  "data_center": "DC-SH-01",
+  "docstatus": 0,
+  "doctype": "Network Zone",
+  "gateway": "10.10.0.1",
+  "modified": "2026-10-16 09:10:00.000000",
+  "modified_by": "Administrator",
+  "name": "NZ-SH-PROD",
+  "status": "在用",
+  "vlan_range": "100-199",
+  "zone_name": "上海生产区",
+  "zone_type": "生产"
+ },
+ {
+  "cidr": "10.20.0.0/16",
+  "data_center": "DC-SH-01",
+  "docstatus": 0,
+  "doctype": "Network Zone",
+  "gateway": "10.20.0.1",
+  "modified": "2026-10-16 09:10:00.000000",
+  "modified_by": "Administrator",
+  "name": "NZ-SH-TEST",
+  "status": "在用",
+  "vlan_range": "200-299",
+  "zone_name": "上海测试区",
+  "zone_type": "测试"
+ },
+ {
+  "cidr": "10.30.0.0/16",
+  "data_center": "DC-BJ-01",
+  "docstatus": 0,
+  "doctype": "Network Zone",
+  "gateway": "10.30.0.1",
+  "modified": "2026-10-16 09:10:00.000000",
+  "modified_by": "Administrator",
+  "name": "NZ-BJ-PROD",
+  "status": "在用",
+  "vlan_range": "300-399",
+  "zone_name": "北京生产区",
+  "zone_type": "生产"
+ }
+]

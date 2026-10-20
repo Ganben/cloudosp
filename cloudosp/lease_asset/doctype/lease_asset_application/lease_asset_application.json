@@ -1,0 +1,86 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "hash",
+ "creation": "2026-10-10 12:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "application_profile",
+  "app_name",
+  "domain",
+  "port",
+  "status"
+ ],
+ "fields": [
+  {
+   "fieldname": "application_profile",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "应用档案",
+   "options": "Application Profile",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "application_profile.app_name",
+   "fieldname": "app_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "应用名称",
+   "read_only": 1
+  },
+  {
+   "description": "默认取应用档案，可在本租赁资产上覆盖",
+   "fetch_from": "application_profile.domain",
+   "fetch_if_empty": 1,
+   "fieldname": "domain",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "域名"
+  },
+  {
+   "description": "默认取应用档案，可在本租赁资产上覆盖",
+   "fetch_from": "application_profile.port",
+   "fetch_if_empty": 1,
+   "fieldname": "port",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "端口",
+   "non_negative": 1
+  },
+  {
+   "default": "在用",
+   "description": "该应用在本租赁资产上的运行状态",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "状态",
+   "options": "\n在用\n停用"
+  }
+ ],
+ "istable": 1,
+ "links": [],
+ "modified": "2026-10-13 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Lease Asset",
+ "name": "Lease Asset Application",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

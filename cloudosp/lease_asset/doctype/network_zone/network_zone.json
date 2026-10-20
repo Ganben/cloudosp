@@ -1,0 +1,100 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "prompt",
+ "creation": "2026-10-16 09:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "zone_name",
+  "data_center",
+  "zone_type",
+  "status",
+  "column_break_network",
+  "cidr",
+  "vlan_range",
+  "gateway"
+ ],
+ "fields": [
+  {
+   "fieldname": "zone_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "网络分区名称",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "data_center",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "所属数据中心",
+   "options": "Data Center",
+   "reqd": 1
+  },
+  {
+   "fieldname": "zone_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "分区类型",
+   "options": "\n生产\n测试\n管理\nDMZ"
+  },
+  {
+   "default": "在用",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "状态",
+   "options": "\n在用\n维护中\n停用"
+  },
+  {
+   "fieldname": "column_break_network",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "例如 10.10.0.0/16",
+   "fieldname": "cidr",
+   "fieldtype": "Data",
+   "label": "网段"
+  },
+  {
+   "description": "例如 100-199",
+   "fieldname": "vlan_range",
+   "fieldtype": "Data",
+   "label": "VLAN 范围"
+  },
+  {
+   "fieldname": "gateway",
+   "fieldtype": "Data",
+   "label": "网关"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-10-16 17:40:00.000000",
+ "modified_by": "Administrator",
+ "module": "Lease Asset",
+ "name": "Network Zone",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "zone_name",
+ "track_changes": 1
+}

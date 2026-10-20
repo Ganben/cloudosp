@@ -1,0 +1,98 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "hash",
+ "creation": "2026-10-17 14:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "product",
+  "spec",
+  "spec_name",
+  "dimension",
+  "unit",
+  "planned_value",
+  "delivered_value",
+  "note"
+ ],
+ "fields": [
+  {
+   "fieldname": "product",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "产品",
+   "options": "Lease Product"
+  },
+  {
+   "fieldname": "spec",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "规格项",
+   "options": "Lease Spec"
+  },
+  {
+   "fieldname": "spec_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "规格名称",
+   "read_only": 1
+  },
+  {
+   "fieldname": "dimension",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "资源维度",
+   "read_only": 1
+  },
+  {
+   "fieldname": "unit",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "单位",
+   "read_only": 1
+  },
+  {
+   "fieldname": "planned_value",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "规格值（应交付）",
+   "read_only": 1
+  },
+  {
+   "fieldname": "delivered_value",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "实际交付值",
+   "non_negative": 1
+  },
+  {
+   "fieldname": "note",
+   "fieldtype": "Data",
+   "label": "说明"
+  }
+ ],
+ "istable": 1,
+ "links": [],
+ "modified": "2026-10-17 14:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Lease Asset",
+ "name": "Lease Request Delivery",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

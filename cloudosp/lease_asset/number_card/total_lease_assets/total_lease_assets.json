@@ -1,0 +1,22 @@
+{
+ "creation": "2026-10-10 12:00:00.000000",
+ "docstatus": 0,
+ "doctype": "Number Card",
+ "document_type": "Lease Asset",
+ "dynamic_filters_json": "[]",
+ "filters_json": "[[\"Lease Asset\",\"docstatus\",\"!=\",\"2\"]]",
+ "function": "Count",
+ "idx": 0,
+ "is_public": 1,
+ "is_standard": 1,
+ "label": "总资产数",
+ "modified": "2026-10-10 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Lease Asset",
+ "name": "Total Lease Assets",
+ "owner": "Administrator",
+ "show_full_number": 1,
+ "show_percentage_stats": 0,
+ "stats_time_interval": "Monthly",
+ "type": "Document Type"
+}

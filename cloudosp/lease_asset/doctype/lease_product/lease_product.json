@@ -1,0 +1,125 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "field:product_code",
+ "creation": "2026-10-10 14:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "product_code",
+  "product_name",
+  "category",
+  "uom",
+  "column_break_basic",
+  "list_price",
+  "resource_pool",
+  "status",
+  "section_break_specs",
+  "specs",
+  "section_break_description",
+  "description"
+ ],
+ "fields": [
+  {
+   "fieldname": "product_code",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "产品编码",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "product_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "产品名称",
+   "reqd": 1
+  },
+  {
+   "fieldname": "category",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "产品类别",
+   "options": "\n云主机\n云存储\n网络\n数据库\n其它"
+  },
+  {
+   "fieldname": "uom",
+   "fieldtype": "Data",
+   "label": "计量单位"
+  },
+  {
+   "fieldname": "column_break_basic",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "list_price",
+   "fieldtype": "Currency",
+   "label": "标准单价",
+   "non_negative": 1
+  },
+  {
+   "fieldname": "resource_pool",
+   "fieldtype": "Link",
+   "label": "默认资源池",
+   "options": "Resource Pool"
+  },
+  {
+   "default": "在用",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "状态",
+   "options": "\n在用\n停用"
+  },
+  {
+   "fieldname": "section_break_specs",
+   "fieldtype": "Section Break",
+   "label": "规格"
+  },
+  {
+   "fieldname": "specs",
+   "fieldtype": "Table",
+   "label": "规格",
+   "options": "Lease Product Spec"
+  },
+  {
+   "fieldname": "section_break_description",
+   "fieldtype": "Section Break",
+   "label": "描述"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "描述"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-10-10 15:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Lease Asset",
+ "name": "Lease Product",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "product_name",
+ "track_changes": 1
+}

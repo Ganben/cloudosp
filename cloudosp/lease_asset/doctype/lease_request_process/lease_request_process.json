@@ -1,0 +1,199 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "naming_series:",
+ "creation": "2026-10-17 14:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "lease_order",
+  "customer",
+  "process_date",
+  "column_break_basic",
+  "status",
+  "section_break_products",
+  "products",
+  "section_break_delivery",
+  "delivery_items",
+  "section_break_tags",
+  "tags",
+  "section_break_deduct",
+  "cpu_deduct",
+  "memory_deduct",
+  "storage_deduct",
+  "section_break_readings",
+  "readings",
+  "section_break_notify",
+  "notify_elink_bot",
+  "notify_sms",
+  "section_break_remarks",
+  "remarks"
+ ],
+ "fields": [
+  {
+   "default": "REQ-.YYYY.-",
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "编号系列",
+   "no_copy": 1,
+   "options": "REQ-.YYYY.-",
+   "reqd": 1
+  },
+  {
+   "fieldname": "lease_order",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "关联租赁订单",
+   "options": "Lease Order",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "lease_order.customer",
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "客户",
+   "options": "Customer",
+   "read_only": 1
+  },
+  {
+   "default": "Today",
+   "fieldname": "process_date",
+   "fieldtype": "Date",
+   "label": "处理日期"
+  },
+  {
+   "fieldname": "column_break_basic",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "草稿",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "状态",
+   "options": "\n草稿\n处理中\n已完成"
+  },
+  {
+   "fieldname": "section_break_products",
+   "fieldtype": "Section Break",
+   "label": "产品列表"
+  },
+  {
+   "fieldname": "products",
+   "fieldtype": "Table",
+   "label": "产品",
+   "options": "Lease Request Product"
+  },
+  {
+   "fieldname": "section_break_delivery",
+   "fieldtype": "Section Break",
+   "label": "交付信息（由产品规格定义）"
+  },
+  {
+   "fieldname": "delivery_items",
+   "fieldtype": "Table",
+   "label": "交付信息",
+   "options": "Lease Request Delivery"
+  },
+  {
+   "fieldname": "section_break_tags",
+   "fieldtype": "Section Break",
+   "label": "运营标签"
+  },
+  {
+   "fieldname": "tags",
+   "fieldtype": "Table",
+   "label": "标签",
+   "options": "Lease Request Tag"
+  },
+  {
+   "fieldname": "section_break_deduct",
+   "fieldtype": "Section Break",
+   "label": "容量扣减"
+  },
+  {
+   "fieldname": "cpu_deduct",
+   "fieldtype": "Float",
+   "label": "扣减 CPU（核）",
+   "non_negative": 1
+  },
+  {
+   "fieldname": "memory_deduct",
+   "fieldtype": "Float",
+   "label": "扣减内存（GB）",
+   "non_negative": 1
+  },
+  {
+   "fieldname": "storage_deduct",
+   "fieldtype": "Float",
+   "label": "扣减存储（TB）",
+   "non_negative": 1
+  },
+  {
+   "fieldname": "section_break_readings",
+   "fieldtype": "Section Break",
+   "label": "资源池状态读数"
+  },
+  {
+   "fieldname": "readings",
+   "fieldtype": "Table",
+   "label": "读数",
+   "options": "Lease Request Pool Reading"
+  },
+  {
+   "fieldname": "section_break_notify",
+   "fieldtype": "Section Break",
+   "label": "通知申请方"
+  },
+  {
+   "default": "0",
+   "fieldname": "notify_elink_bot",
+   "fieldtype": "Check",
+   "label": "eLink Bot 推送"
+  },
+  {
+   "default": "0",
+   "fieldname": "notify_sms",
+   "fieldtype": "Check",
+   "label": "短信推送"
+  },
+  {
+   "fieldname": "section_break_remarks",
+   "fieldtype": "Section Break",
+   "label": "备注"
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Small Text",
+   "label": "备注"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-10-17 14:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Lease Asset",
+ "name": "Lease Request Process",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

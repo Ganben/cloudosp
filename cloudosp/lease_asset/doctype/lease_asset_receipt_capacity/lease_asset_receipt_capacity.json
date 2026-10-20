@@ -1,0 +1,101 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "hash",
+ "creation": "2026-10-17 13:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "entry_type",
+  "dimension",
+  "capacity_qty",
+  "column_break_material",
+  "product",
+  "product_name",
+  "quantity",
+  "note"
+ ],
+ "fields": [
+  {
+   "default": "容量",
+   "fieldname": "entry_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "类型",
+   "options": "\n容量\n物料"
+  },
+  {
+   "depends_on": "eval:doc.entry_type == \"容量\"",
+   "fieldname": "dimension",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "资源维度",
+   "options": "\nCPU\n内存\n存储"
+  },
+  {
+   "depends_on": "eval:doc.entry_type == \"容量\"",
+   "fieldname": "capacity_qty",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "容量数量",
+   "non_negative": 1
+  },
+  {
+   "fieldname": "column_break_material",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:doc.entry_type == \"物料\"",
+   "fieldname": "product",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "物料项目",
+   "options": "Lease Product"
+  },
+  {
+   "fetch_from": "product.product_name",
+   "fieldname": "product_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "物料名称",
+   "read_only": 1
+  },
+  {
+   "depends_on": "eval:doc.entry_type == \"物料\"",
+   "fieldname": "quantity",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "物料数量",
+   "non_negative": 1
+  },
+  {
+   "fieldname": "note",
+   "fieldtype": "Data",
+   "label": "说明"
+  }
+ ],
+ "istable": 1,
+ "links": [],
+ "modified": "2026-10-17 13:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Lease Asset",
+ "name": "Lease Asset Receipt Capacity",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

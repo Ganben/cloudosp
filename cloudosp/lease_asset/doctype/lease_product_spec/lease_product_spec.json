@@ -1,0 +1,130 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "hash",
+ "creation": "2026-10-10 15:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "spec_type",
+  "spec",
+  "spec_name",
+  "dimension",
+  "column_break_basic",
+  "quantity",
+  "uom",
+  "resource_pool",
+  "capacity_value",
+  "capacity_unit",
+  "note"
+ ],
+ "fields": [
+  {
+   "default": "自定义",
+   "fetch_from": "spec.spec_type",
+   "fieldname": "spec_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "规格类型",
+   "options": "\n计算\n存储\n网络\n自定义",
+   "read_only_depends_on": "eval:doc.spec"
+  },
+  {
+   "fieldname": "spec",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "规格项",
+   "options": "Lease Spec"
+  },
+  {
+   "fetch_from": "spec.spec_name",
+   "fieldname": "spec_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "规格名称",
+   "read_only_depends_on": "eval:doc.spec"
+  },
+  {
+   "fetch_from": "spec.dimension",
+   "fieldname": "dimension",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "资源维度",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_basic",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "fieldname": "quantity",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "数量",
+   "non_negative": 1,
+   "reqd": 1
+  },
+  {
+   "fetch_from": "spec.uom",
+   "fieldname": "uom",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "单位",
+   "read_only_depends_on": "eval:doc.spec"
+  },
+  {
+   "description": "该规格项从哪个资源池取；留空时继承产品的默认资源池",
+   "fieldname": "resource_pool",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "资源池",
+   "options": "Resource Pool"
+  },
+  {
+   "description": "该规格项在该资源池上的库存度量：数量 × 规格换算系数，自动计算",
+   "fieldname": "capacity_value",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "库存度量",
+   "read_only": 1
+  },
+  {
+   "description": "库存度量的标准单位：CPU=核、内存=GB、存储=TB",
+   "fieldname": "capacity_unit",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "度量单位",
+   "read_only": 1
+  },
+  {
+   "fieldname": "note",
+   "fieldtype": "Data",
+   "label": "说明"
+  }
+ ],
+ "istable": 1,
+ "links": [],
+ "modified": "2026-10-17 09:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Lease Asset",
+ "name": "Lease Product Spec",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

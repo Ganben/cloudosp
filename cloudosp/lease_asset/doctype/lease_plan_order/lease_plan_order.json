@@ -1,0 +1,174 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "naming_series:",
+ "creation": "2026-10-16 17:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "plan_type",
+  "requested_by",
+  "customer",
+  "column_break_basic",
+  "expected_date",
+  "status",
+  "section_break_items",
+  "items",
+  "section_break_summary",
+  "summary",
+  "column_break_total",
+  "cpu_total",
+  "memory_total",
+  "storage_total",
+  "section_break_remarks",
+  "remarks"
+ ],
+ "fields": [
+  {
+   "default": "PLAN-.YYYY.-",
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "编号系列",
+   "no_copy": 1,
+   "options": "PLAN-.YYYY.-",
+   "reqd": 1
+  },
+  {
+   "default": "计划",
+   "fieldname": "plan_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "类型",
+   "options": "\n计划\n预定",
+   "reqd": 1
+  },
+  {
+   "default": "__user",
+   "fieldname": "requested_by",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "提交人",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "客户",
+   "options": "Customer"
+  },
+  {
+   "fieldname": "column_break_basic",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "expected_date",
+   "fieldtype": "Date",
+   "label": "期望日期"
+  },
+  {
+   "default": "草稿",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "状态",
+   "options": "\n草稿\n已提交\n已确认\n已取消"
+  },
+  {
+   "fieldname": "section_break_items",
+   "fieldtype": "Section Break",
+   "label": "产品明细"
+  },
+  {
+   "fieldname": "items",
+   "fieldtype": "Table",
+   "label": "产品明细",
+   "options": "Lease Plan Order Item"
+  },
+  {
+   "fieldname": "section_break_summary",
+   "fieldtype": "Section Break",
+   "label": "按区域资源汇总（自动计算）"
+  },
+  {
+   "fieldname": "summary",
+   "fieldtype": "Table",
+   "label": "区域汇总",
+   "options": "Lease Plan Order Summary",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_total",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "cpu_total",
+   "fieldtype": "Float",
+   "label": "CPU 合计（核）",
+   "read_only": 1
+  },
+  {
+   "fieldname": "memory_total",
+   "fieldtype": "Float",
+   "label": "内存合计（GB）",
+   "read_only": 1
+  },
+  {
+   "fieldname": "storage_total",
+   "fieldtype": "Float",
+   "label": "存储合计（TB）",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_remarks",
+   "fieldtype": "Section Break",
+   "label": "备注"
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Small Text",
+   "label": "备注"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-10-16 17:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Lease Asset",
+ "name": "Lease Plan Order",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "Desk User",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "plan_type",
+ "track_changes": 1
+}

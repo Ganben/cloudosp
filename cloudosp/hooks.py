@@ -5,21 +5,43 @@ app_description = "cloud operation service planner"
 app_email = "cao@chaoc.net"
 app_license = "mit"
 
+# Fixtures
+# ------------------
+# 随应用同步的基础数据，`bench export-fixtures` 可回写这些文件
+
+# fixtures 目录下的文件名带序号前缀，用来控制导入顺序：
+# 规格字典 -> 数据中心 -> 网络分区 -> 区域 -> 资源池 -> 产品 -> 产品库存
+fixtures = [
+	"Lease Spec",
+	"Data Center",
+	"Network Zone",
+	"Region",
+	"Resource Pool",
+	"Lease Product",
+	"Lease Product Stock",
+]
+
+# Website Context
+# ------------------
+# 向网站导航栏追加"租赁资产前台"入口
+
+update_website_context = "cloudosp.utils.update_website_context"
+
 # Apps
 # ------------------
 
 # required_apps = []
 
 # Each item in the list will be shown as an app in the apps page
-# add_to_apps_screen = [
-# 	{
-# 		"name": "cloudosp",
-# 		"logo": "/assets/cloudosp/logo.png",
-# 		"title": "Cloudosp",
-# 		"route": "/cloudosp",
-# 		"has_permission": "cloudosp.api.permission.has_app_permission"
-# 	}
-# ]
+add_to_apps_screen = [
+	{
+		"name": "cloudosp",
+		"logo": "/assets/cloudosp/logo.svg",
+		"title": "Cloudosp",
+		"route": "/app/lease-asset",
+		"has_permission": "cloudosp.api.permission.has_app_permission"
+	}
+]
 
 # Includes in <head>
 # ------------------

@@ -1,0 +1,177 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "naming_series:",
+ "creation": "2026-10-17 10:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "replenish_type",
+  "resource_pool",
+  "region",
+  "column_break_basic",
+  "data_center",
+  "expected_date",
+  "actual_date",
+  "status",
+  "section_break_expand",
+  "cpu_add",
+  "memory_add",
+  "storage_add",
+  "section_break_asset",
+  "asset",
+  "machine_count",
+  "section_break_remarks",
+  "remarks"
+ ],
+ "fields": [
+  {
+   "default": "REPL-.YYYY.-",
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "编号系列",
+   "no_copy": 1,
+   "options": "REPL-.YYYY.-",
+   "reqd": 1
+  },
+  {
+   "default": "扩容",
+   "fieldname": "replenish_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "补货类型",
+   "options": "\n扩容\n资产新增",
+   "reqd": 1
+  },
+  {
+   "fieldname": "resource_pool",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "资源池",
+   "options": "Resource Pool",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "resource_pool.region",
+   "fieldname": "region",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "区域",
+   "options": "Region",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_basic",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "resource_pool.data_center",
+   "fieldname": "data_center",
+   "fieldtype": "Link",
+   "label": "数据中心",
+   "options": "Data Center",
+   "read_only": 1
+  },
+  {
+   "fieldname": "expected_date",
+   "fieldtype": "Date",
+   "label": "期望日期"
+  },
+  {
+   "fieldname": "actual_date",
+   "fieldtype": "Date",
+   "label": "完成日期"
+  },
+  {
+   "default": "草稿",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "状态",
+   "options": "\n草稿\n已提交\n进行中\n已完成\n已取消"
+  },
+  {
+   "depends_on": "eval:doc.replenish_type == \"扩容\"",
+   "fieldname": "section_break_expand",
+   "fieldtype": "Section Break",
+   "label": "扩容容量"
+  },
+  {
+   "fieldname": "cpu_add",
+   "fieldtype": "Float",
+   "label": "新增 CPU（核）",
+   "non_negative": 1
+  },
+  {
+   "fieldname": "memory_add",
+   "fieldtype": "Float",
+   "label": "新增内存（GB）",
+   "non_negative": 1
+  },
+  {
+   "fieldname": "storage_add",
+   "fieldtype": "Float",
+   "label": "新增存储（TB）",
+   "non_negative": 1
+  },
+  {
+   "depends_on": "eval:doc.replenish_type == \"资产新增\"",
+   "fieldname": "section_break_asset",
+   "fieldtype": "Section Break",
+   "label": "资产新增"
+  },
+  {
+   "fieldname": "asset",
+   "fieldtype": "Link",
+   "label": "物理机（自有资产）",
+   "options": "Asset"
+  },
+  {
+   "default": "1",
+   "fieldname": "machine_count",
+   "fieldtype": "Int",
+   "label": "台数",
+   "non_negative": 1
+  },
+  {
+   "fieldname": "section_break_remarks",
+   "fieldtype": "Section Break",
+   "label": "备注"
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Small Text",
+   "label": "备注"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-10-17 10:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Lease Asset",
+ "name": "Lease Replenish Order",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "replenish_type",
+ "track_changes": 1
+}

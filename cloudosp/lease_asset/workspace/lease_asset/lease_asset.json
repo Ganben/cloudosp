@@ -1,0 +1,87 @@
+{
+ "charts": [],
+ "content": "[{\"id\":\"la-header-0001\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>资产租赁</b></span>\",\"col\":12}},{\"id\":\"la-nc-0001\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"总资产数\",\"col\":4}},{\"id\":\"la-nc-0002\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"作业中的资产数\",\"col\":4}},{\"id\":\"la-nc-0003\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"进行中的作业数\",\"col\":4}},{\"id\":\"la-shortcut-0001\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"租赁资产仪表盘\",\"col\":3}},{\"id\":\"la-shortcut-0002\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"资源池维护\",\"col\":3}},{\"id\":\"la-shortcut-0003\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"计划与预定\",\"col\":3}},{\"id\":\"la-shortcut-0004\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"产品库维护\",\"col\":3}},{\"id\":\"la-shortcut-0005\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"运营服务仪表盘\",\"col\":3}},{\"id\":\"la-shortcut-0006\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"扩容物控\",\"col\":3}},{\"id\":\"la-shortcut-0007\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"资产扩容接收\",\"col\":3}},{\"id\":\"la-shortcut-0008\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"租赁申请处理\",\"col\":3}},{\"id\":\"la-shortcut-0009\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"运营账号维护\",\"col\":3}}]",
+ "creation": "2026-10-10 12:00:00.000000",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "package",
+ "idx": 0,
+ "is_hidden": 0,
+ "label": "资产租赁",
+ "links": [],
+ "modified": "2026-10-19 09:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Lease Asset",
+ "name": "Lease Asset",
+ "number_cards": [
+  {
+   "label": "总资产数",
+   "number_card_name": "Total Lease Assets"
+  },
+  {
+   "label": "作业中的资产数",
+   "number_card_name": "Lease Assets On Job"
+  },
+  {
+   "label": "进行中的作业数",
+   "number_card_name": "Jobs In Progress"
+  }
+ ],
+ "owner": "Administrator",
+ "parent_page": "",
+ "public": 1,
+ "quick_lists": [],
+ "restrict_to_domain": "",
+ "roles": [],
+ "shortcuts": [
+  {
+   "label": "租赁资产仪表盘",
+   "link_to": "lease-asset-dashboard",
+   "type": "Page"
+  },
+  {
+   "label": "资源池维护",
+   "link_to": "resource-pool-admin",
+   "type": "Page"
+  },
+  {
+   "label": "计划与预定",
+   "link_to": "lease-plan-board",
+   "type": "Page"
+  },
+  {
+   "label": "产品库维护",
+   "link_to": "product-catalog-admin",
+   "type": "Page"
+  },
+  {
+   "label": "运营服务仪表盘",
+   "link_to": "ops-dashboard",
+   "type": "Page"
+  },
+  {
+   "label": "扩容物控",
+   "link_to": "expansion-control",
+   "type": "Page"
+  },
+  {
+   "label": "资产扩容接收",
+   "link_to": "asset-receipt",
+   "type": "Page"
+  },
+  {
+   "label": "租赁申请处理",
+   "link_to": "lease-request-process",
+   "type": "Page"
+  },
+  {
+   "label": "运营账号维护",
+   "link_to": "user-admin",
+   "type": "Page"
+  }
+ ],
+ "title": "Lease Asset"
+}

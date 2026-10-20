@@ -1,0 +1,54 @@
+[
+ {
+  "available_qty": 28,
+  "docstatus": 0,
+  "doctype": "Lease Product Stock",
+  "modified": "2026-10-10 20:10:00.000000",
+  "modified_by": "Administrator",
+  "name": "P-VM-4C8G - POOL-COMPUTE",
+  "product": "P-VM-4C8G",
+  "product_name": "基础云主机 4C8G",
+  "resource_pool": "POOL-COMPUTE",
+  "total_qty": 40,
+  "used_qty": 12
+ },
+ {
+  "available_qty": 17,
+  "docstatus": 0,
+  "doctype": "Lease Product Stock",
+  "modified": "2026-10-10 20:10:00.000000",
+  "modified_by": "Administrator",
+  "name": "P-VM-8C16G - POOL-COMPUTE",
+  "product": "P-VM-8C16G",
+  "product_name": "标准云主机 8C16G",
+  "resource_pool": "POOL-COMPUTE",
+  "total_qty": 20,
+  "used_qty": 3
+ },
+ {
+  "available_qty": 75,
+  "docstatus": 0,
+  "doctype": "Lease Product Stock",
+  "modified": "2026-10-10 20:10:00.000000",
+  "modified_by": "Administrator",
+  "name": "P-STORE-1T - POOL-STORAGE",
+  "product": "P-STORE-1T",
+  "product_name": "云存储 1TB",
+  "resource_pool": "POOL-STORAGE",
+  "total_qty": 100,
+  "used_qty": 25
+ },
+ {
+  "available_qty": 182,
+  "docstatus": 0,
+  "doctype": "Lease Product Stock",
+  "modified": "2026-10-10 20:10:00.000000",
+  "modified_by": "Administrator",
+  "name": "P-IP - POOL-NETWORK",
+  "product": "P-IP",
+  "product_name": "公网IP",
+  "resource_pool": "POOL-NETWORK",
+  "total_qty": 200,
+  "used_qty": 18
+ }
+]

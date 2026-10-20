@@ -1,0 +1,154 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "naming_series:",
+ "creation": "2026-10-10 12:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "asset_name",
+  "customer",
+  "column_break_basic",
+  "asset",
+  "lease_order",
+  "resource_pool",
+  "section_break_applications",
+  "applications",
+  "section_break_period",
+  "start_date",
+  "end_date",
+  "column_break_period",
+  "service_status",
+  "section_break_remarks",
+  "remarks"
+ ],
+ "fields": [
+  {
+   "default": "LA-.YYYY.-",
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "编号系列",
+   "no_copy": 1,
+   "options": "LA-.YYYY.-",
+   "reqd": 1
+  },
+  {
+   "fieldname": "asset_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "租赁资产名称",
+   "reqd": 1
+  },
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "客户",
+   "options": "Customer",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_basic",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "asset",
+   "fieldtype": "Link",
+   "label": "自有资产（实体）",
+   "options": "Asset"
+  },
+  {
+   "fieldname": "lease_order",
+   "fieldtype": "Link",
+   "label": "租赁订单",
+   "options": "Lease Order"
+  },
+  {
+   "fieldname": "resource_pool",
+   "fieldtype": "Link",
+   "label": "资源池",
+   "options": "Resource Pool"
+  },
+  {
+   "fieldname": "section_break_applications",
+   "fieldtype": "Section Break",
+   "label": "应用档案"
+  },
+  {
+   "fieldname": "applications",
+   "fieldtype": "Table",
+   "label": "关联应用",
+   "options": "Lease Asset Application"
+  },
+  {
+   "fieldname": "section_break_period",
+   "fieldtype": "Section Break",
+   "label": "租期与状态"
+  },
+  {
+   "fieldname": "start_date",
+   "fieldtype": "Date",
+   "label": "起租日期"
+  },
+  {
+   "fieldname": "end_date",
+   "fieldtype": "Date",
+   "label": "退租日期"
+  },
+  {
+   "fieldname": "column_break_period",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "未交付",
+   "fieldname": "service_status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "服务状态",
+   "options": "\n未交付\n在用\n停用\n已退租"
+  },
+  {
+   "fieldname": "section_break_remarks",
+   "fieldtype": "Section Break",
+   "label": "备注"
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Small Text",
+   "label": "备注"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2026-10-10 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Lease Asset",
+ "name": "Lease Asset",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "amend": 1,
+   "cancel": 1,
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "asset_name",
+ "track_changes": 1
+}
