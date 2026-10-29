@@ -1,0 +1,41 @@
+{
+ "actions": [],
+ "creation": "2026-10-26 10:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "capacity_type",
+  "requirement_qty"
+ ],
+ "fields": [
+  {
+   "fieldname": "capacity_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "容量类型",
+   "options": "\n计算\n存储\nIP",
+   "reqd": 1
+  },
+  {
+   "columns": 2,
+   "fieldname": "requirement_qty",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "单位规格消耗容量池数量",
+   "non_negative": 1,
+   "reqd": 1
+  }
+ ],
+ "istable": 1,
+ "links": [],
+ "modified": "2026-10-26 10:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Cloudosp",
+ "name": "Spec Capacity Requirement",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}

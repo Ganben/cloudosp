@@ -1,0 +1,144 @@
+{% extends "templates/web.html" %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block style %}
+<style>
+	.osp-hero {
+		background: linear-gradient(135deg, #173b62 0%, #2490ef 100%);
+		border-radius: 16px;
+		color: #fff;
+		padding: 28px 32px;
+		margin-bottom: 24px;
+		box-shadow: 0 12px 32px rgba(23, 59, 98, 0.22);
+	}
+	.osp-hero h1 { font-size: 22px; font-weight: 600; margin: 0 0 6px; color: #fff; }
+	.osp-hero p { margin: 0; opacity: .85; font-size: 13px; }
+	.osp-hero-actions { margin-top: 18px; display: flex; gap: 12px; flex-wrap: wrap; }
+	.osp-btn {
+		display: inline-flex; align-items: center; gap: 6px;
+		background: rgba(255,255,255,.16); border: 1px solid rgba(255,255,255,.35);
+		color: #fff !important; border-radius: 8px; padding: 8px 16px;
+		font-size: 13px; font-weight: 500; text-decoration: none;
+		transition: transform .15s ease, background .15s ease;
+	}
+	.osp-btn:hover { background: rgba(255,255,255,.28); transform: translateY(-1px); text-decoration: none; }
+	.osp-card {
+		background: #fff; border: 1px solid #e6e9ee; border-radius: 14px;
+		padding: 20px 22px; margin-bottom: 20px;
+		box-shadow: 0 1px 3px rgba(31, 39, 51, .05);
+	}
+	.osp-card h2 { font-size: 15px; font-weight: 600; margin: 0 0 14px; color: #1f2733; }
+	.osp-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+	.osp-table th {
+		text-align: left; font-weight: 500; color: #6b7280; font-size: 12px;
+		text-transform: uppercase; letter-spacing: .04em;
+		padding: 8px 10px; border-bottom: 1px solid #eceff3;
+	}
+	.osp-table td { padding: 12px 10px; border-bottom: 1px solid #f3f5f7; color: #1f2733; vertical-align: middle; }
+	.osp-table tr:hover td { background: #f8fafc; }
+	.osp-badge {
+		display: inline-block; padding: 3px 10px; border-radius: 999px;
+		font-size: 11px; font-weight: 500;
+	}
+	.osp-badge-draft { background: #fff4e5; color: #b45309; }
+	.osp-badge-submitted { background: #e8f7ee; color: #15803d; }
+	.osp-badge-cancelled { background: #fdecef; color: #e11d48; }
+	.osp-submit {
+		background: #2490ef; color: #fff; border: none; border-radius: 6px;
+		padding: 5px 14px; font-size: 12px; cursor: pointer;
+		transition: background .15s ease, transform .15s ease;
+	}
+	.osp-submit:hover { background: #173b62; transform: translateY(-1px); }
+	.osp-empty { color: #6b7280; font-size: 13px; padding: 18px 0; }
+</style>
+{% endblock %}
+
+{% block page_content %}
+<div class="osp-hero">
+	<h1>{{ title }}</h1>
+	<p>
+		{% if tenant %}
+			{{ _("当前租户") }}：<strong>{{ tenant }}</strong>
+		{% else %}
+			{{ _("当前账号未关联租户，请联系管理员在「租户」中登记您的邮箱") }}
+		{% endif %}
+	</p>
+	<div class="osp-hero-actions">
+		{% for wf in web_forms %}
+			{% if wf.doc_type == "Resource Application Order" %}
+				<a class="osp-btn" href="/{{ wf.route }}">+ {{ _("申请资源订单") }}</a>
+			{% elif wf.doc_type == "Resource Pre-order" %}
+				<a class="osp-btn" href="/{{ wf.route }}">+ {{ _("新建资源预订单") }}</a>
+			{% endif %}
+		{% endfor %}
+	</div>
+</div>
+
+{% for section in [("资源申请订单", "Resource Application Order", application_orders), ("资源预订单", "Resource Pre-order", pre_orders)] %}
+<div class="osp-card">
+	<h2>{{ _(section[0]) }}</h2>
+	{% if section[2] %}
+	<table class="osp-table">
+		<thead>
+			<tr>
+				<th>{{ _("单据编号") }}</th>
+				<th>{{ _("租户") }}</th>
+				<th>{{ _("日期") }}</th>
+				<th>{{ _("状态") }}</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for row in section[2] %}
+			<tr>
+				<td><strong>{{ row.name }}</strong></td>
+				<td>{{ row.tenant }}</td>
+				<td>{{ format_date(row.order_date) }}</td>
+				<td>
+					{% set cls = "osp-badge-draft" if row.status == "草稿" else ("osp-badge-submitted" if row.status == "已提交" else "osp-badge-cancelled") %}
+					<span class="osp-badge {{ cls }}">{{ _(row.status) }}</span>
+				</td>
+				<td>
+					{% if row.docstatus == 0 %}
+					<button class="osp-submit"
+						data-doctype="{{ section[1] }}" data-name="{{ row.name }}">
+						{{ _("提交下单") }}
+					</button>
+					{% endif %}
+				</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	{% else %}
+	<div class="osp-empty">{{ _("暂无单据") }}</div>
+	{% endif %}
+</div>
+{% endfor %}
+{% endblock %}
+
+{% block script %}
+<script>
+	document.querySelectorAll(".osp-submit").forEach(function (btn) {
+		btn.addEventListener("click", function () {
+			const doctype = btn.dataset.doctype;
+			const name = btn.dataset.name;
+			btn.disabled = true;
+			frappe.call({
+				method: "cloudosp.utils.portal.submit_order",
+				args: { doctype: doctype, name: name },
+				freeze: true,
+				callback: function (r) {
+					if (!r.exc) {
+						frappe.show_alert({ message: "{{ _('下单成功') }}", indicator: "green" });
+						setTimeout(function () { window.location.reload(); }, 700);
+					}
+					btn.disabled = false;
+				},
+				error: function () { btn.disabled = false; },
+			});
+		});
+	});
+</script>
+{% endblock %}

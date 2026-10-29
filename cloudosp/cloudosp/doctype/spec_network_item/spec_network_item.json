@@ -1,0 +1,72 @@
+{
+ "actions": [],
+ "creation": "2026-10-28 10:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "network_type",
+  "linked_product",
+  "binding_target",
+  "quantity",
+  "bandwidth_mbps",
+  "remark"
+ ],
+ "fields": [
+  {
+   "fieldname": "network_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "网络类型",
+   "options": "\n私网网卡\n私网IP\nEIP\nCLB\nNAT\n其他",
+   "reqd": 1
+  },
+  {
+   "fieldname": "linked_product",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "关联云产品",
+   "options": "Cloud Product"
+  },
+  {
+   "fieldname": "binding_target",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "绑定/关联对象",
+   "description": "如绑定的 ECS、CLB 后端、NAT 网关所属 VPC 等"
+  },
+  {
+   "columns": 1,
+   "default": "1",
+   "fieldname": "quantity",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "数量",
+   "non_negative": 1
+  },
+  {
+   "columns": 1,
+   "fieldname": "bandwidth_mbps",
+   "fieldtype": "Float",
+   "label": "带宽（Mbps）",
+   "non_negative": 1
+  },
+  {
+   "fieldname": "remark",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "说明"
+  }
+ ],
+ "istable": 1,
+ "links": [],
+ "modified": "2026-10-28 10:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Cloudosp",
+ "name": "Spec Network Item",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}

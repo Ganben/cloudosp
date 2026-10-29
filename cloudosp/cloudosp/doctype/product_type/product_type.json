@@ -1,0 +1,98 @@
+{
+ "actions": [],
+ "autoname": "field:type_name",
+ "creation": "2026-10-28 10:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "type_name",
+  "category",
+  "column_break_1",
+  "is_base_product",
+  "enabled",
+  "section_desc",
+  "description"
+ ],
+ "fields": [
+  {
+   "fieldname": "type_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "产品类型",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "category",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "资源归类",
+   "options": "\n计算\n存储\n网络",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_base_product",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "基础产品"
+  },
+  {
+   "default": "1",
+   "fieldname": "enabled",
+   "fieldtype": "Check",
+   "label": "启用"
+  },
+  {
+   "fieldname": "section_desc",
+   "fieldtype": "Section Break",
+   "label": "说明"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "描述"
+  }
+ ],
+ "links": [
+  {
+   "group": "产品",
+   "link_doctype": "Cloud Product",
+   "link_fieldname": "product_type"
+  }
+ ],
+ "modified": "2026-10-28 10:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Cloudosp",
+ "name": "Product Type",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "read": 1,
+   "role": "All",
+   "select": 1
+  }
+ ],
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "type_name",
+ "track_changes": 1
+}

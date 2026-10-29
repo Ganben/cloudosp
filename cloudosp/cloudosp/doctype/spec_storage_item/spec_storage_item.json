@@ -1,0 +1,67 @@
+{
+ "actions": [],
+ "creation": "2026-10-28 10:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "storage_type",
+  "storage_model",
+  "capacity_gb",
+  "quantity",
+  "performance"
+ ],
+ "fields": [
+  {
+   "fieldname": "storage_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "存储类型",
+   "options": "\n系统盘\n数据盘\n共享存储",
+   "reqd": 1
+  },
+  {
+   "fieldname": "storage_model",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "存储型号",
+   "options": "\n云硬盘\n对象存储",
+   "reqd": 1
+  },
+  {
+   "columns": 1,
+   "fieldname": "capacity_gb",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "容量（GB）",
+   "non_negative": 1,
+   "reqd": 1
+  },
+  {
+   "columns": 1,
+   "default": "1",
+   "fieldname": "quantity",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "数量",
+   "non_negative": 1
+  },
+  {
+   "fieldname": "performance",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "性能/规格说明"
+  }
+ ],
+ "istable": 1,
+ "links": [],
+ "modified": "2026-10-28 10:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Cloudosp",
+ "name": "Spec Storage Item",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}

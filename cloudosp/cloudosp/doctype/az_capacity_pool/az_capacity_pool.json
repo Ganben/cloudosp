@@ -1,0 +1,107 @@
+{
+ "actions": [],
+ "autoname": "format:AZP-{#####}",
+ "creation": "2026-10-26 10:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "resource_pool",
+  "az_name",
+  "capacity_type",
+  "column_break_1",
+  "total_capacity",
+  "sellable_stock",
+  "reserved_qty",
+  "section_summary",
+  "available_stock"
+ ],
+ "fields": [
+  {
+   "fieldname": "resource_pool",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "资源池",
+   "options": "Resource Pool",
+   "reqd": 1
+  },
+  {
+   "fieldname": "az_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "AZ 名称",
+   "reqd": 1
+  },
+  {
+   "fieldname": "capacity_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "容量类型",
+   "options": "\n计算\n存储\nIP",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "total_capacity",
+   "fieldtype": "Float",
+   "label": "总容量"
+  },
+  {
+   "fieldname": "sellable_stock",
+   "fieldtype": "Float",
+   "label": "可售库存",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "reserved_qty",
+   "fieldtype": "Float",
+   "label": "预占数量",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_summary",
+   "fieldtype": "Section Break",
+   "label": "可用量"
+  },
+  {
+   "fieldname": "available_stock",
+   "fieldtype": "Float",
+   "label": "当前可用量（可售库存 - 预占）",
+   "read_only": 1
+  }
+ ],
+ "links": [],
+ "modified": "2026-10-26 10:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Cloudosp",
+ "name": "AZ Capacity Pool",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "read": 1,
+   "role": "All",
+   "select": 1
+  }
+ ],
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

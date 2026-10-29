@@ -1,0 +1,59 @@
+{
+ "actions": [],
+ "creation": "2026-10-26 10:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "cloud_product",
+  "spec",
+  "quantity",
+  "spec_summary"
+ ],
+ "fields": [
+  {
+   "fieldname": "cloud_product",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "云产品",
+   "options": "Cloud Product",
+   "reqd": 1
+  },
+  {
+   "fieldname": "spec",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "规格",
+   "options": "Resource Spec",
+   "reqd": 1
+  },
+  {
+   "columns": 1,
+   "default": "1",
+   "fieldname": "quantity",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "数量",
+   "non_negative": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "spec_summary",
+   "fieldtype": "Small Text",
+   "in_list_view": 1,
+   "label": "约定资源量摘要",
+   "read_only": 1
+  }
+ ],
+ "istable": 1,
+ "links": [],
+ "modified": "2026-10-26 10:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Cloudosp",
+ "name": "Order Product Item",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}

@@ -147,13 +147,15 @@ app_license = "mit"
 # -----------
 # Permissions evaluated in scripted ways
 
-# permission_query_conditions = {
-# 	"Event": "frappe.desk.doctype.event.event.get_permission_query_conditions",
-# }
-#
-# has_permission = {
-# 	"Event": "frappe.desk.doctype.event.event.has_permission",
-# }
+permission_query_conditions = {
+	"Resource Application Order": "cloudosp.utils.portal.application_order_query_conditions",
+	"Resource Pre-order": "cloudosp.utils.portal.pre_order_query_conditions",
+}
+
+has_permission = {
+	"Resource Application Order": "cloudosp.utils.portal.order_has_permission",
+	"Resource Pre-order": "cloudosp.utils.portal.order_has_permission",
+}
 
 # Document Events
 # ---------------
@@ -276,4 +278,15 @@ app_license = "mit"
 # ------------
 # List of apps whose translatable strings should be excluded from this app's translations.
 # ignore_translatable_strings_from = []
+
+# Fixtures
+# --------
+# Portal web forms shipped with the app (created on migrate via sync_fixtures)
+fixtures = [
+	{
+		"dt": "Web Form",
+		"filters": [["doc_type", "in", ["Resource Application Order", "Resource Pre-order"]]],
+	},
+]
+
 

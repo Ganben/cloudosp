@@ -1,0 +1,253 @@
+{% extends "templates/web.html" %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block style %}
+<style>
+	.osp-dash { max-width: 1160px; margin: 0 auto; }
+	.osp-hero {
+		position: relative; overflow: hidden;
+		background: linear-gradient(120deg, #173b62 0%, #1b5c98 45%, #2490ef 100%);
+		border-radius: 20px; color: #fff; padding: 34px 36px;
+		box-shadow: 0 18px 44px rgba(23, 59, 98, .28);
+	}
+	.osp-hero::after {
+		content: ""; position: absolute; right: -60px; top: -80px;
+		width: 320px; height: 320px; border-radius: 50%;
+		background: radial-gradient(circle, rgba(255,255,255,.22), transparent 68%);
+	}
+	.osp-hero h1 { margin: 0 0 8px; font-size: 26px; font-weight: 600; color: #fff; letter-spacing: -.01em; }
+	.osp-hero p { margin: 0; font-size: 13.5px; opacity: .85; }
+	.osp-hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 22px; position: relative; z-index: 1; }
+	.osp-hero-btn {
+		display: inline-flex; align-items: center; gap: 8px;
+		padding: 9px 18px; border-radius: 10px; font-size: 13px; font-weight: 500;
+		background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.32);
+		color: #fff !important; text-decoration: none;
+		transition: transform .18s ease, background .18s ease, box-shadow .18s ease;
+	}
+	.osp-hero-btn:hover {
+		background: rgba(255,255,255,.26); transform: translateY(-2px);
+		box-shadow: 0 8px 18px rgba(9, 30, 54, .25); text-decoration: none;
+	}
+	.osp-hero-btn-primary { background: #fff; color: #173b62 !important; border-color: #fff; }
+	.osp-hero-btn-primary:hover { background: #eaf4ff; }
+
+	.osp-section { margin-top: 28px; }
+	.osp-section-title {
+		display: flex; align-items: baseline; gap: 10px;
+		font-size: 15px; font-weight: 600; color: #1f2733; margin: 0 0 14px;
+	}
+	.osp-section-title span { font-size: 12px; font-weight: 400; color: #6b7280; }
+
+	.osp-kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; }
+	.osp-kpi {
+		background: #fff; border: 1px solid #e6e9ee; border-radius: 14px;
+		padding: 18px 20px; box-shadow: 0 1px 3px rgba(31,39,51,.05);
+		transition: transform .18s ease, box-shadow .18s ease;
+	}
+	.osp-kpi:hover { transform: translateY(-3px); box-shadow: 0 12px 26px rgba(31,39,51,.10); }
+	.osp-kpi-label { font-size: 12px; color: #6b7280; letter-spacing: .02em; }
+	.osp-kpi-value { font-size: 28px; font-weight: 600; color: #1f2733; line-height: 1.25; margin-top: 4px; }
+	.osp-kpi-foot { font-size: 11.5px; color: #6b7280; margin-top: 6px; }
+	.osp-kpi-foot b { color: #2490ef; font-weight: 500; }
+
+	.osp-card {
+		background: #fff; border: 1px solid #e6e9ee; border-radius: 14px;
+		padding: 20px 22px; box-shadow: 0 1px 3px rgba(31,39,51,.05);
+	}
+	.osp-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+	.osp-table th {
+		text-align: left; font-size: 11.5px; font-weight: 500; color: #6b7280;
+		text-transform: uppercase; letter-spacing: .05em; padding: 8px 10px;
+		border-bottom: 1px solid #eceff3;
+	}
+	.osp-table td { padding: 12px 10px; border-bottom: 1px solid #f3f5f7; color: #1f2733; }
+	.osp-table tr:last-child td { border-bottom: none; }
+	.osp-table tr:hover td { background: #f8fafc; }
+	.osp-bar { position: relative; height: 6px; border-radius: 999px; background: #eef2f6; overflow: hidden; min-width: 110px; }
+	.osp-bar > i { position: absolute; left: 0; top: 0; bottom: 0; border-radius: 999px; background: linear-gradient(90deg, #2490ef, #173b62); }
+	.osp-badge {
+		display: inline-block; padding: 2px 9px; border-radius: 999px; font-size: 11px; font-weight: 500;
+		background: #eef4fb; color: #173b62;
+	}
+	.osp-badge-warn { background: #fff4e5; color: #b45309; }
+	.osp-badge-danger { background: #fdecef; color: #e11d48; }
+
+	.osp-index-group { margin-bottom: 18px; }
+	.osp-index-group h3 { font-size: 12.5px; font-weight: 500; color: #6b7280; margin: 0 0 10px; letter-spacing: .03em; }
+	.osp-index-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 12px; }
+	.osp-index-item {
+		display: block; background: #fff; border: 1px solid #e6e9ee; border-radius: 12px;
+		padding: 16px 18px; text-decoration: none; color: inherit;
+		transition: border-color .18s ease, transform .18s ease, box-shadow .18s ease;
+	}
+	.osp-index-item:hover {
+		border-color: #b9d8f7; transform: translateY(-2px);
+		box-shadow: 0 10px 22px rgba(36,144,239,.12); text-decoration: none;
+	}
+	.osp-index-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+	.osp-index-title { font-size: 13.5px; font-weight: 600; color: #1f2733; }
+	.osp-index-desc { font-size: 12px; color: #6b7280; margin-top: 6px; line-height: 1.5; }
+	.osp-tag { font-size: 10.5px; padding: 2px 8px; border-radius: 999px; background: #f3f5f7; color: #6b7280; white-space: nowrap; }
+	@media (max-width: 640px) {
+		.osp-hero { padding: 26px 22px; border-radius: 16px; }
+		.osp-hero h1 { font-size: 21px; }
+	}
+</style>
+{% endblock %}
+
+{% block page_content %}
+<div class="osp-dash">
+	<div class="osp-hero">
+		<h1>{{ title }}</h1>
+		<p>
+			{% if tenant %}{{ _("当前租户") }}：<strong>{{ tenant }}</strong> ·{% endif %}
+			{{ _("资源池容量、订单情况与快捷入口") }}
+		</p>
+		<div class="osp-hero-actions">
+			{% if web_form_routes.get("Resource Application Order") %}
+			<a class="osp-hero-btn osp-hero-btn-primary" href="/{{ web_form_routes['Resource Application Order'] }}">+ {{ _("申请资源订单") }}</a>
+			{% endif %}
+			{% if web_form_routes.get("Resource Pre-order") %}
+			<a class="osp-hero-btn" href="/{{ web_form_routes['Resource Pre-order'] }}">+ {{ _("新建资源预订单") }}</a>
+			{% endif %}
+			<a class="osp-hero-btn" href="/my-orders">{{ _("我的订单") }}</a>
+			<a class="osp-hero-btn" href="/app/pool-wizard">{{ _("资源池配置") }}</a>
+		</div>
+	</div>
+
+	<div class="osp-section">
+		<h2 class="osp-section-title">{{ _("资源概况") }}</h2>
+		<div class="osp-kpis">
+			<div class="osp-kpi">
+				<div class="osp-kpi-label">{{ _("租户") }}</div>
+				<div class="osp-kpi-value">{{ stats.tenants }}</div>
+				<div class="osp-kpi-foot">{{ _("启用中的租户") }}</div>
+			</div>
+			<div class="osp-kpi">
+				<div class="osp-kpi-label">{{ _("资源池") }}</div>
+				<div class="osp-kpi-value">{{ stats.pools }}</div>
+				<div class="osp-kpi-foot">{{ _("可用资源池") }}</div>
+			</div>
+			<div class="osp-kpi">
+				<div class="osp-kpi-label">{{ _("云产品 / 规格") }}</div>
+				<div class="osp-kpi-value">{{ stats.products }} <span style="font-size:16px;color:#6b7280;">/ {{ stats.specs }}</span></div>
+				<div class="osp-kpi-foot">{{ _("在售产品与规格") }}</div>
+			</div>
+			<div class="osp-kpi">
+				<div class="osp-kpi-label">{{ _("申请订单") }}</div>
+				<div class="osp-kpi-value">{{ application_orders.total }}</div>
+				<div class="osp-kpi-foot">{{ _("草稿") }} <b>{{ application_orders.draft }}</b> · {{ _("已提交") }} <b>{{ application_orders.submitted }}</b></div>
+			</div>
+			<div class="osp-kpi">
+				<div class="osp-kpi-label">{{ _("预订单") }}</div>
+				<div class="osp-kpi-value">{{ pre_orders.total }}</div>
+				<div class="osp-kpi-foot">{{ _("草稿") }} <b>{{ pre_orders.draft }}</b> · {{ _("已提交") }} <b>{{ pre_orders.submitted }}</b></div>
+			</div>
+		</div>
+	</div>
+
+	<div class="osp-section">
+		<h2 class="osp-section-title">{{ _("可售产品目录") }} <span>{{ _("云产品型号与可售数量") }}</span></h2>
+		<div class="osp-card">
+			{% if catalog_items %}
+			<table class="osp-table">
+				<thead>
+					<tr>
+						<th>{{ _("型号") }}</th>
+						<th>{{ _("资源池") }}</th>
+						<th>{{ _("云产品") }}</th>
+						<th>{{ _("规格") }}</th>
+						<th style="text-align:right;">{{ _("可售数量") }}</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for item in catalog_items %}
+					<tr>
+						<td><strong>{{ item.model_name }}</strong></td>
+						<td>{{ item.resource_pool }}</td>
+						<td>{{ item.cloud_product }}</td>
+						<td>{{ item.spec }}</td>
+						<td style="text-align:right;">
+							<span class="osp-badge">{{ "{:,.0f}".format(item.sellable_qty or 0) }}</span>
+						</td>
+					</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+			{% else %}
+			<div style="color:#6b7280;font-size:13px;">
+				{{ _("云产品目录为空，请先完成资源池库存配置。") }}
+				<a href="/app/pool-wizard">{{ _("前往配置") }} →</a>
+			</div>
+			{% endif %}
+		</div>
+	</div>
+
+	<div class="osp-section">
+		<h2 class="osp-section-title">{{ _("容量池可售情况") }} <span>{{ _("可用量 = 可售库存 − 预占数量") }}</span></h2>
+		<div class="osp-card">
+			{% if capacity_rows %}
+			<table class="osp-table">
+				<thead>
+					<tr>
+						<th>{{ _("资源池") }}</th>
+						<th>{{ _("容量类型") }}</th>
+						<th>{{ _("可售库存") }}</th>
+						<th>{{ _("预占数量") }}</th>
+						<th>{{ _("可用量") }}</th>
+						<th style="width:180px;">{{ _("预占占比") }}</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for row in capacity_rows %}
+					<tr>
+						<td><strong>{{ row.resource_pool }}</strong></td>
+						<td><span class="osp-badge">{{ _(row.capacity_type) }}</span></td>
+						<td>{{ "{:,.0f}".format(row.sellable or 0) }}</td>
+						<td>{{ "{:,.0f}".format(row.reserved or 0) }}</td>
+						<td>
+							{% if row.available <= 0 %}
+								<span class="osp-badge osp-badge-danger">{{ "{:,.0f}".format(row.available) }}</span>
+							{% elif row.reserved_pct >= 80 %}
+								<span class="osp-badge osp-badge-warn">{{ "{:,.0f}".format(row.available) }}</span>
+							{% else %}
+								<strong>{{ "{:,.0f}".format(row.available) }}</strong>
+							{% endif %}
+						</td>
+						<td>
+							<div class="osp-bar"><i style="width: {{ [row.reserved_pct, 100] | min }}%;"></i></div>
+							<div style="font-size:11px;color:#6b7280;margin-top:4px;">{{ row.reserved_pct }}%</div>
+						</td>
+					</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+			{% else %}
+			<div style="color:#6b7280;font-size:13px;">{{ _("暂无容量池数据") }}</div>
+			{% endif %}
+		</div>
+	</div>
+
+	<div class="osp-section">
+		<h2 class="osp-section-title">{{ _("页面索引") }} <span>{{ _("单据录入、订单查询与数据维护入口") }}</span></h2>
+		{% for group in page_index %}
+		<div class="osp-index-group">
+			<h3>{{ _(group.group) }}</h3>
+			<div class="osp-index-grid">
+				{% for item in group["items"] %}
+				<a class="osp-index-item" href="{{ item.route }}">
+					<div class="osp-index-head">
+						<span class="osp-index-title">{{ _(item.title) }}</span>
+						<span class="osp-tag">{{ _(item.tag) }}</span>
+					</div>
+					<div class="osp-index-desc">{{ _(item.description) }}</div>
+				</a>
+				{% endfor %}
+			</div>
+		</div>
+		{% endfor %}
+	</div>
+</div>
+{% endblock %}

@@ -1,0 +1,21 @@
+{
+ "content": null,
+ "creation": "2026-10-27 10:30:00.000000",
+ "docstatus": 0,
+ "doctype": "Page",
+ "modified": "2026-10-28 10:30:00.000000",
+ "modified_by": "Administrator",
+ "module": "Cloudosp",
+ "name": "pool-wizard",
+ "owner": "Administrator",
+ "page_name": "pool-wizard",
+ "roles": [
+  {
+   "role": "System Manager"
+  }
+ ],
+ "script": null,
+ "standard": "Yes",
+ "style": null,
+ "title": "云产品新增向导"
+}

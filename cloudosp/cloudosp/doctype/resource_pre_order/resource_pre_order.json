@@ -1,0 +1,137 @@
+{
+ "actions": [],
+ "autoname": "naming_series:OSP-PRB-.YYYY.-.####",
+ "creation": "2026-10-26 10:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series_section",
+  "naming_series",
+  "column_break_head",
+  "tenant",
+  "order_date",
+  "expected_date",
+  "status",
+  "section_items",
+  "items",
+  "section_summary",
+  "capacity_demand_summary"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series_section",
+   "fieldtype": "Section Break",
+   "collapsible": 1
+  },
+  {
+   "default": "OSP-PRB-.YYYY.-.####",
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "单据编号系列",
+   "options": "OSP-PRB-.YYYY.-.####",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_head",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "tenant",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "租户（申请者）",
+   "options": "Tenant",
+   "reqd": 1
+  },
+  {
+   "default": "Today",
+   "fieldname": "order_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "预订单日期",
+   "reqd": 1
+  },
+  {
+   "fieldname": "expected_date",
+   "fieldtype": "Date",
+   "label": "预计交付日期"
+  },
+  {
+   "default": "草稿",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "状态",
+   "options": "\n草稿\n已提交\n已取消",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_items",
+   "fieldtype": "Section Break",
+   "label": "云产品清单"
+  },
+  {
+   "fieldname": "items",
+   "fieldtype": "Table",
+   "label": "云产品清单",
+   "options": "Order Product Item",
+   "reqd": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_summary",
+   "fieldtype": "Section Break",
+   "label": "容量需求汇总"
+  },
+  {
+   "fieldname": "capacity_demand_summary",
+   "fieldtype": "Small Text",
+   "label": "容量需求汇总",
+   "read_only": 1
+  }
+ ],
+ "is_submittable": 1,
+ "links": [
+  {
+   "group": "关联",
+   "link_doctype": "Tenant",
+   "link_fieldname": "tenant"
+  }
+ ],
+ "modified": "2026-10-26 10:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Cloudosp",
+ "name": "Resource Pre-order",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "cancel": 1,
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "read": 1,
+   "role": "All",
+   "select": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "tenant",
+ "track_changes": 1
+}

@@ -1,0 +1,174 @@
+{
+ "actions": [],
+ "autoname": "field:spec_code",
+ "creation": "2026-10-26 10:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "spec_code",
+  "spec_name",
+  "column_break_1",
+  "cloud_product",
+  "product_type",
+  "resource_pool",
+  "section_agreed",
+  "vcpu_count",
+  "memory_gb",
+  "disk_gb",
+  "ip_count",
+  "section_storage",
+  "storage_items",
+  "section_compute",
+  "compute_items",
+  "section_network",
+  "network_items",
+  "section_capacity",
+  "capacity_requirements"
+ ],
+ "fields": [
+  {
+   "fieldname": "spec_code",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "规格编码",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "spec_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "规格名称",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "cloud_product",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "云产品",
+   "options": "Cloud Product",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "cloud_product.product_type",
+   "fieldname": "product_type",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "产品类型",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "cloud_product.resource_pool",
+   "fieldname": "resource_pool",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "资源池",
+   "options": "Resource Pool",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_agreed",
+   "fieldtype": "Section Break",
+   "label": "规格约定资源量"
+  },
+  {
+   "fieldname": "vcpu_count",
+   "fieldtype": "Int",
+   "label": "vCPU（核）"
+  },
+  {
+   "fieldname": "memory_gb",
+   "fieldtype": "Float",
+   "label": "内存（GB）"
+  },
+  {
+   "fieldname": "disk_gb",
+   "fieldtype": "Float",
+   "label": "磁盘（GB）"
+  },
+  {
+   "fieldname": "ip_count",
+   "fieldtype": "Float",
+   "label": "IP（个）"
+  },
+  {
+   "fieldname": "section_storage",
+   "fieldtype": "Section Break",
+   "label": "存储配置（系统盘 / 数据盘 / 共享存储）"
+  },
+  {
+   "fieldname": "storage_items",
+   "fieldtype": "Table",
+   "label": "存储配置",
+   "options": "Spec Storage Item"
+  },
+  {
+   "fieldname": "section_compute",
+   "fieldtype": "Section Break",
+   "label": "计算配置（CPU / 内存）"
+  },
+  {
+   "fieldname": "compute_items",
+   "fieldtype": "Table",
+   "label": "计算配置",
+   "options": "Spec Compute Item"
+  },
+  {
+   "fieldname": "section_network",
+   "fieldtype": "Section Break",
+   "label": "网络配置（私网网卡/IP、EIP、CLB、NAT 等）"
+  },
+  {
+   "fieldname": "network_items",
+   "fieldtype": "Table",
+   "label": "网络配置",
+   "options": "Spec Network Item"
+  },
+  {
+   "fieldname": "section_capacity",
+   "fieldtype": "Section Break",
+   "label": "容量需求（单位规格消耗 AZ 容量池数量）"
+  },
+  {
+   "fieldname": "capacity_requirements",
+   "fieldtype": "Table",
+   "label": "规格容量需求",
+   "options": "Spec Capacity Requirement",
+   "reqd": 1
+  }
+ ],
+ "links": [],
+ "modified": "2026-10-26 10:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Cloudosp",
+ "name": "Resource Spec",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "read": 1,
+   "role": "All",
+   "select": 1
+  }
+ ],
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "spec_name",
+ "track_changes": 1
+}

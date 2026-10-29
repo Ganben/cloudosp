@@ -1,0 +1,83 @@
+[
+ {
+  "doctype": "Web Form",
+  "name": "resource-application-order",
+  "title": "资源申请订单",
+  "route": "resource-application-order",
+  "doc_type": "Resource Application Order",
+  "module": "Cloudosp",
+  "published": 1,
+  "login_required": 1,
+  "allow_multiple": 1,
+  "button_label": "保存草稿",
+  "introduction_text": "<p>填写租户与云产品清单后保存为草稿，可在「我的订单」中提交下单。申请订单提交时将校验资源池可售库存，超出库存的订单无法下单。</p>",
+  "success_title": "申请订单已保存",
+  "success_message": "订单已保存为草稿，请前往「我的订单」提交下单。",
+  "success_url": "/my-orders",
+  "show_list": 0,
+  "web_form_fields": [
+   {
+    "fieldname": "tenant",
+    "fieldtype": "Link",
+    "label": "租户（申请者）",
+    "options": "Tenant",
+    "reqd": 1
+   },
+   {
+    "fieldname": "order_date",
+    "fieldtype": "Date",
+    "label": "申请日期",
+    "reqd": 1
+   },
+   {
+    "fieldname": "items",
+    "fieldtype": "Table",
+    "label": "云产品清单",
+    "options": "Order Product Item"
+   }
+  ]
+ },
+ {
+  "doctype": "Web Form",
+  "name": "resource-pre-order",
+  "title": "资源预订单",
+  "route": "resource-pre-order",
+  "doc_type": "Resource Pre-order",
+  "module": "Cloudosp",
+  "published": 1,
+  "login_required": 1,
+  "allow_multiple": 1,
+  "button_label": "保存草稿",
+  "introduction_text": "<p>预订单不校验资源池容量库存，提交后将把容量需求计入容量池预占数量。保存草稿后可在「我的订单」中提交。</p>",
+  "success_title": "预订单已保存",
+  "success_message": "预订单已保存为草稿，请前往「我的订单」提交。",
+  "success_url": "/my-orders",
+  "show_list": 0,
+  "web_form_fields": [
+   {
+    "fieldname": "tenant",
+    "fieldtype": "Link",
+    "label": "租户（申请者）",
+    "options": "Tenant",
+    "reqd": 1
+   },
+   {
+    "fieldname": "order_date",
+    "fieldtype": "Date",
+    "label": "预订单日期",
+    "reqd": 1
+   },
+   {
+    "fieldname": "expected_date",
+    "fieldtype": "Date",
+    "label": "预计交付日期"
+   },
+   {
+    "fieldname": "items",
+    "fieldtype": "Table",
+    "label": "云产品清单",
+    "options": "Order Product Item"
+   }
+  ]
+ }
+]
